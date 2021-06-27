@@ -10,7 +10,7 @@ n = 50
 x = np.linspace(0, 10, n)
 
 def func(x):
-    s = np.exp(-0.02*x**2)*np.sin(x)
+    s = np.exp(-0.005*x**2)*np.sin(x)
     return(s)
 
 y = func(x)
