@@ -25,11 +25,11 @@ with open("results.txt", 'w') as file:
         file.write("{}".format(result[i]))
 
 with open("run.txt", "w+") as file_start:
-    file_start.truncate()
+    file_start.truncate(0)
     file_start.write("nope")
-    file_start.truncate()
+    file_start.truncate(0)
     file_start.write("done")
     time.sleep(2)
-    file_start.truncate()
+    file_start.truncate(0)
     file_start.write("nope")
-    file_start.truncate()
+    file_start.truncate(0)
