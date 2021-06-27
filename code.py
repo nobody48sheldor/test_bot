@@ -5,7 +5,7 @@ import time
 
 result = []
 
-n = 50
+n = 200
 
 x = np.linspace(0, 10, n)
 
