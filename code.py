@@ -1,36 +1,32 @@
-import discord
-import os
+import matplotlib.pyplot as plt
+import numpy as np
+from math import *
 import time
 
-runned = False
+result = []
 
-client = discord.Client()
+n = 100
 
-token = "ODUzNDExNTM4ODIyODg5NTIy.YMU_bg.jGdR6tJVCUx5DfSrBbmSTMqXms4"
+x = np.linspace(0, 10, n)
 
-@client.event
-async def on_ready():
-    print("letssss goooo")
+def func(x):
+    s = np.exp(-0.05*x**2)*np.sin(x)
+    return(s)
 
-@client.event
-async def on_message(msg):
-    runned = False
-    if msg.author == client.user:
-        return
-    if msg.content.startswith('£wassup'):
-        await msg.channel.send('wassup!')
-    if msg.content.startswith('£run'):
-        channel = msg.channel
-        os.startfile("executor.bat")
-        while runned == False:
-            with open("run.txt", "r") as running:
-                if running.read() == "done":
-                    runned = True
-                    print(runned)
-        with open("results.txt", "r") as file_end:
-            r = file_end.read()
-            print(r)
-        await channel.send(r)
-        await channel.send(file=discord.File('result.png'))
+y = func(x)
 
-client.run(token)
+plt.plot(x, y)
+plt.savefig('result')
+
+result.append(n)
+
+with open("results.txt", 'w') as file:
+    for i in range(len(result)):
+        file.write("{}".format(result[i]))
+
+with open("run.txt", "w+") as file_start:
+    file_start.truncate()
+    file_start.write("nope")
+    file_start.truncate()
+    time.sleep(2)
+    file_start.write("done")
